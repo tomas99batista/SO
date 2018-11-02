@@ -16,28 +16,29 @@ int compareInts(const void *px1, const void *px2)
 
 int main(int argc, char *argv[])
 {
-    int i, numSize;
+    int i, numSize,j;
     int *numbers;
-
-    numSize = argc - 1;
+    numSize = 100;
 
     /* Memory allocation for all the numbers in the arguments */
     numbers = (int *) malloc(sizeof(int) * numSize);
 
-
-    for(i = 0 ; i < numSize ; i++)
-    {
-        numbers[i] = atoi(argv[i+1]);
-    }
+    FILE *fp = fopen(argv[1], "r");
+    i = 0;
+    int val;
+    while(fscanf(fp, "%d", &val)==1){
+        numbers[i]=val;
+        i++;
+        }
 
     /* void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *)); 
          The qsort() function sorts an array with nmemb elements of size size.*/
-    qsort(numbers, numSize, sizeof(int), compareInts);
+    qsort(numbers, i, sizeof(int), compareInts);
 
     printf("Sorted numbers: \n");
-    for(i = 0 ; i < numSize ; i++)
+    for(j = 0 ; j < i ; j++)
     {
-        printf("%d\n", numbers[i]);
+        printf("%d\n", numbers[j]);
     }
 
     return EXIT_SUCCESS;
