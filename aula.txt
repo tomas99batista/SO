@@ -1,0 +1,21 @@
+AULA 5 EX 4b
+ordenar palavras pedidas ao user
+char palavras [10000][100]
+char *palavras[1000]
+
+
+int main(...){
+char word [100];
+char **palavras;
+scanf("%s", word);
+palavras= (char **) malloc(1 x sizeof(char*))
+palavras[0]=(char *) malloc((strlen(word)+1) x sizeof(char))
+strcopy(palavras(0),word)
+scanf("%s", word)
+while(strcomp(word, "end") =! 0){
+    c++
+    palavras=realloc(palavras, c x sizeof(char *))
+    palavras[c-1]=strduq(word)
+    scanf("%s", word);
+}
+qsort(palavras, c, sizeof(char *), comparestr)
