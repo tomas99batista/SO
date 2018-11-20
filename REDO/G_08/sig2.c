@@ -6,7 +6,7 @@
 
 #define NTIMES 50
 
-static void Interrupt (int);
+static void Interrupt(int);
 
 int main(int argc, char *argv[])
 {
@@ -15,33 +15,42 @@ int main(int argc, char *argv[])
 
     /* altera a rotina de atendimento ao ^C */
     sigact.sa_handler = Interrupt;
-    sigemptyset (&sigact.sa_mask);
+    sigemptyset(&sigact.sa_mask);
     sigact.sa_flags = 0;
-    if (sigaction (SIGINT, &sigact, NULL) < 0) { 
-        perror ("Rotina de atendimento não instalada\n");
+    if (sigaction(SIGINT, &sigact, NULL) < 0)
+    {
+        perror("Rotina de atendimento não instalada\n");
         return EXIT_FAILURE;
     }
 
     /* contador */
-    printf ("PID = %u\n", getpid ());
+    printf("PID = %u\n", getpid());
     i = 0;
-    while (i <= NTIMES) { 
-       printf ("\r%08u ", i++);
-       fflush(stdout);
-       sleep(1);
+    while (i <= NTIMES)
+    {
+        printf("\r%08u ", i++);
+        fflush(stdout);
+        sleep(1);
     }
     printf("\n");
- 
+
     return EXIT_SUCCESS;
 }
-
-static void Interrupt (int signum)
+int c = 0;
+static void Interrupt(int signum)
 {
-    if (signum == SIGINT) {
-        printf("\nCalma, ainda não cheguei a %d!\n", NTIMES);
+    if (c == 4)
+    {
+        kill(getpid(), SIGKILL);
     }
-    else {  
-        printf ("Foi recebido um sinal diferente de SIGINT!\n");
-        exit (EXIT_FAILURE);
+    if (signum == SIGINT)
+    {
+        printf("\nCalma, ainda não cheguei a %d!\n", NTIMES);
+        c++;
+    }
+    else
+    {
+        printf("Foi recebido um sinal diferente de SIGINT!\n");
+        exit(EXIT_FAILURE);
     }
 }

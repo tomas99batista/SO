@@ -18,3 +18,13 @@ int main(int argc, char *argv[])
 
     return EXIT_SUCCESS;
 }
+
+//From @tiagocmendes (GitHub)
+/*
+    Exercício 5
+    CTRL-C -> SIGINT    termina
+    CTRL-Z -> SIGSTOP   stopped
+
+    fg -> foreground
+    bg -> background
+*/
