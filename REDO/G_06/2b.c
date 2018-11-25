@@ -25,6 +25,9 @@ int main(int argc, char *argv[])
         numbers[i]=val;
         i++;
     }
+    // while(fread(&numbers, sizeof(fp)-1,1,fp)){
+        // i++;
+    // }
 
     /* void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *)); 
          The qsort() function sorts an array with nmemb elements of size size.*/

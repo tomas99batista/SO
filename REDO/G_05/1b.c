@@ -3,13 +3,14 @@
 
 int main(int argc, char **argv)
 {
-    int argumentos = -1;
-    for(int j = 0; j< argc; j++){
-        argumentos++;
-    }
+    // int argumentos = -1;
+    // for (int j = 0; j < argc; j++)
+    // {
+    //     argumentos++;
+    // }
     if (argc != 3)
     {
-        printf("Num errado de args, %d, deve passar apenas dois\n", argumentos);
+        printf("Num errado de args, %d, deve passar apenas dois\n", argc-1);
     }
     else
     {

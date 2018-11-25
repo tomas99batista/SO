@@ -5,17 +5,27 @@
 
 int main(int argc, char **argv)
 {
-    // int random_number = rand() % 100 + 1;
-    int random_number = (int)((100 - 1 +1)*((double)rand()/RAND_MAX) + 1);
+    int randmax, randmin;
+    if (argc != 3)
+    {
+        printf("Pfv insira 2 args apenas, o valor max e o min para gerar rand\n");
+        return EXIT_FAILURE;
+    }
+    else
+    {
+        randmax = atoi(argv[1]);
+        randmin = atoi(argv[2]);
+    }
+    int random_number = (int)((randmax - randmin + 1) * ((double)rand() / RAND_MAX) + 1);
 
-    printf("%d", random_number);
+    printf("%d\n", random_number);
     int tentativa = 0;
     int count = 0;
     do
     {
         printf("Tentativa: ");
-        count++;
         scanf("%d", &tentativa);
+        count++;
         if (tentativa == random_number)
         {
             printf("Parabens! Numero era %d\nAcertaste apos %d tentativas\n", tentativa, count);

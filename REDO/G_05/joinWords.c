@@ -11,9 +11,9 @@ int main(int argc, char **argv)
     for (i = 1; i < argc; i++)
     {
         strcat(arg, argv[i]);
-        numChars += strlen(arg);
     }
 
-    printf("Sentence: %s\n%d\n", arg, numChars);
+
+    printf("Sentence: %s\n%li\n", arg, strlen(arg));
     return 0;
 }
