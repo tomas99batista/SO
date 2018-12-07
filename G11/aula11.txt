@@ -1,0 +1,25 @@
+System V IPC
+Filas de mensagens
+1-int msgget(key_t key, int msgflag)
+2-int msgctl(int msgid, int cmd, struct .......)
+3-int msgmd(int msgid, void * msgf, size msgsz, int msgflag)
+    msgf > apontador para um buffer para a mensagem
+    msgsz > tamanho mtext
+4-int msgrcv(int msgid, void * msgf, size_t msgsz, int msgtyp, int msgflag)
+    msgf > apontador para um buffer onde colocar mensagem
+    msgsz > tamanho max mtext
+    msgflag > IPC_NOWAIT
+    msgtyp      > 0->   le 1a mensagem
+                > >0 -> le 1a mensagem cujo mytype=msgtyp
+                > <0 -> le 1a mensagem com menor mytype e mytype<=|msgtyp|
+    
+o Msg id da 2,3,4 é o valor de retorno da 1
+msgflag > para definir permissoes (IPC_CREAT//IPC_EXCL)
+
+VER MSG.h aula 11
+
+
+struct msginfo { 
+    long mytypee; //>0 //Obrigatorio
+    char mtext[1]   //pode ter diferentes sizes >= 0
+}
